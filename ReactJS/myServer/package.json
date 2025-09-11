@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "SET NODE_ENV=development && nodemon ./src/index.js",
-    "prod": "SET NODE_ENV=production && node index.js"
-  },
+  "start": "cross-env NODE_ENV=development nodemon ./src/index.js",
+  "prod": "cross-env NODE_ENV=production node ./src/index.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^10.0.0",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
