@@ -1,20 +1,17 @@
-const mongoose = require('mongoose');
-
-const { development } = require('../config/config');
-//const connectStr = development.dbUrl;
-const connectAtlas = development.dbAtlas;
+const mongoose = require("mongoose");
 
 module.exports = (app) => {
-
-    async function main(){
-
-        await mongoose.connect(connectAtlas, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-    
-        console.log('Data base connected!');
+  async function main() {
+    try {
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log("✅ Database connected!");
+    } catch (err) {
+      console.error("❌ Database connection error:", err.message);
     }
-    main();
+  }
 
-}
+  main();
+};

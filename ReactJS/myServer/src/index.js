@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 
@@ -5,7 +7,8 @@ const app = express();
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
-const portConfig = require('./config/config');
+//const portConfig = require('./config/config');
+const port = process.env.PORT || 5000;
 const mongooseConfig = require('./config/configMongoose');
 const routes = require('./routes/routes');
 
@@ -32,4 +35,4 @@ app.use(routes)
 mongooseConfig(app);
 
 
-app.listen(portConfig.development.PORT, () => console.log(`Server runing on port: ${portConfig.development.PORT}...`))
+app.listen(port, () => console.log("Server listenen on port " + `${port}`));
